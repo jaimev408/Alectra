@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<div class="top-pad">	
+<h2>WELCOME TO ADVANCED SEARCH</h2>
+	<form method="GET" action="{{ url_for('searchingFunction') }}" role="form">
+		<div class="form-group">{{ form.name.label }}: {{ form.name() }}</div>
+		<div class="form-group">{{ form.shipping.label }}: {{ form.shipping() }}</div>
+		<div class="form-group">{{ form.no_recycle_fee.label }}: {{ form.no_recycle_fee() }}</div>
+		<div class="form-group">{{ form.dept_id.label }}: {{ form.dept_id() }}</div>
+		<div class="form-group">{{ form.prod_rating_ge.label }}: {{ form.prod_rating_ge() }}</div>
+		<div class="form-group">{{ form.prod_rating_se.label }}: {{ form.prod_rating_se() }}</div>
+		<div class="form-group">{{ form.price_ge.label }}: {{ form.price_ge() }}</div>
+		<div class="form-group">{{ form.price_se.label }}: {{ form.price_se() }}</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+
+	</form>
+
+	</div>
+{% endblock %}

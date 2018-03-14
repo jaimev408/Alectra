@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<div class="top-pad">	
+<h2>Welcome to the Alectra registration page</h2>
+	<form method="POST" action="{{ url_for('registerPage') }}" role="form">
+		<div class="form-group">{{ form.username.label }}: {{ form.username() }}</div>
+		<div class="form-group">{{ form.email.label }}: {{ form.email() }}</div>
+		<div class="form-group">{{ form.password.label }}: {{ form.password() }}</div>
+		<div class="form-group">{{ form.confirm.label }}: {{ form.confirm() }}</div>
+		<div class="form-group">{{ form.TOS.label }}: {{ form.TOS() }}</div>
+
+		<button type="submit" class="btn btn-default">Submit</button>
+
+	</form>
+
+	</div>
+{% endblock %}

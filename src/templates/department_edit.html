@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<a style="margin-right:25px" href="{{ url_for('department_edit', key = dept_id) }}">Edit</a>
+<form method= "POST" action="">
+<table>
+  <br>
+  {% for field in form %}
+    <tr>
+    <td>{{ field.label }}: &nbsp;</td><td>{{ field }}</td><!--its a for loop that goes through every part of the form --> 
+    </tr>
+  {% endfor %}
+</table>
+<p><input type=submit value=Submit></form></p>
+
+{% endblock %}

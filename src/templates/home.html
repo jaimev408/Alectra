@@ -1,0 +1,345 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<style>
+  body {
+      font: 400 15px Helvetica, sans-serif;
+      line-height: 1.8;
+      color: #818181;
+  }
+  h2 {
+      font-size: 24px;
+      text-transform: uppercase;
+      color: #303030;
+      font-weight: 600;
+      margin-bottom: 30px;
+  }
+  h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      color: #303030;
+      font-weight: 400;
+      margin-bottom: 30px;
+  }  
+  .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 25px;
+      font-family: times, sans-serif;
+  }
+
+  .container-fluid {
+      padding: 60px 50px;
+  }
+
+  .carousel-inner > .item > img {
+    margin: 0 auto;
+    width:350px;
+}
+
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+  .logo-small {
+      color: #f4511e;
+      font-size: 50px;
+  }
+  .logo {
+      color: #f4511e;
+      font-size: 200px;
+  }
+  .thumbnail {
+      padding: 0 0 15px 0;
+      border: none;
+      border-radius: 0;
+  }
+  .thumbnail img {
+      width: 100%;
+      height: 100%;
+      margin-bottom: 10px;
+  }
+  .carousel-control.right, .carousel-control.left {
+      background-image: none;
+      color: #000000;
+  }
+  .carousel-indicators li {
+      border-color: #f4511e;
+  }
+  .carousel-indicators li.active {
+      background-color: #f4511e;
+  }
+  .item h4 {
+      font-size: 19px;
+      line-height: 1.375em;
+      font-weight: 400;
+      font-style: italic;
+      margin: 70px 0;
+  }
+  .item span {
+      font-style: normal;
+  }
+  
+  footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #000000;
+  }
+  .slideanim {visibility:hidden;}
+
+  .slide {
+      animation-name: slide;
+      -webkit-animation-name: slide;
+      animation-duration: 1s;
+      -webkit-animation-duration: 1s;
+      visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    } 
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {//sets a rule
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+  @media screen and (max-width: 480px) { //sets a rule that if max-width = 480px and screen
+    .logo {
+        font-size: 150px;
+    }
+  }
+
+  .bgimg{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("http://www.guoguiyan.com/data/out/20/69588588-best-wallpapers.png")}
+  }
+  </style>
+  <header class="w3-display-container w3-wide bgimg w3-opacity-min">
+  <div class="w3-display-middle " style = "white-space:nowrap;">
+    <h1 class="w3-jumbo" style = "color:white">Alectra</h1>
+    <p style = "color:white">For all your tech needs</p>
+  </div>
+</header>
+
+<!-- Container (About Section) -->
+<div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>ABOUT US. THE STORY OF ALECTRA.</h2><br><!--COULD ALSO PUT PICS  -->
+      <h4>The dream of 3 amigos has finally come true. </h4><br>
+      <p>We started this company from nothing, to bring a wide array of electronics to the public at competing prices. We only care about money. In fact, we take donations, please ask our computer manager Christian Zaranda for our paypal account! </p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-signal logo"></span>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>International Python awareness Month</h2><br>
+      <h4><strong>Taking Action:</strong> This month we are donating to the Freedom from Java organization to continue the fight to raise the number of python proggrammers in the world. 0.001 percent of every purchase will be donated. We invite you to partake in this fight against Java and other progrramming languages. Alectra and Freedom from Java are thankful for your donations. </h4><br>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Services Section) -->
+<div id="services" class="container-fluid text-center">
+  <h2>DEPARTMENTS</h2>
+  <h4>Our various departments</h4>
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-camera logo-small"></span>
+      <h4><a href = "{{ url_for('get_message_dept', ID = 8) }}">CAMERAS</a></h4>
+      <p>Capture that Moment</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-phone logo-small"></span>
+      <h4><a href = "{{ url_for('get_message_dept', ID = 3) }}">PHONES</a></h4>
+      <p>The Power at your fingertips</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-plane logo-small"></span>
+      <h4><a href = "{{ url_for('get_message_dept', ID = 2) }}">DRONES</a></h4>
+      <p>Fly them at your own risk</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-print logo-small"></span>
+      <h4><a href = "{{ url_for('get_message_dept', ID = 10) }}">PRINTERS</a></h4>
+      <p>Buy one to get what you want on paper</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon glyphicon-headphones logo-small"></span>
+      <h4><a href = "{{ url_for('get_message_dept', ID = 6) }}">STEREO SYSTEMS</a></h4>
+      <p>Treat your ears</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-hdd logo-small"></span>
+      <h4 style="color:#303030;"><a href = "{{ url_for('get_message_dept', ID = 1) }}">COMPUTERS</a></h4>
+      <p>The latest and greatest</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div id="portfolio" class="container-fluid text-center bg-grey">
+  <h2>Locations</h2><br><br><br>
+  <div class="row text-center slideanim">
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <a href = "https://www.spaceneedle.com/home/"><img src="https://media1.britannica.com/eb-media/22/94422-131-85DD74AB.jpg"  alt="Seattle" width="400" height="300"></a>
+        <p><strong>Seattle</strong></p>
+        <p>COMING SOON!</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <a href = "http://www.nycgo.com/attractions/times-square"><img src="http://img13.deviantart.net/05da/i/2015/123/0/9/bird_view__new_york_by_seasonschild-d2dwyzy.jpg" alt="New York" width="400" height="300"></a>
+        <p><strong>New York</strong></p>
+        <p>Taking a bite of the big apple.</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <a href = "http://sfgov.org/"><img src="http://1p6ep31f32pvjrml246jyq31.wpengine.netdna-cdn.com/wp-content/uploads/2012/08/San-Francisco.-You-didnt-know-2.jpg" alt="San Francisco" width="400" height="300"></a>
+        <p><strong>San Francisco</strong></p>
+        <p>Taking the West Coast by Storm</p>
+      </div>
+    </div>
+  </div><br>
+  
+  <h2>Popular Items</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active" role = "option">
+        <a href = "{{ url_for('get_message', ID = 1) }}"><img src="https://images-na.ssl-images-amazon.com/images/I/816jzlNp%2B0L._SL1500_.jpg" height="1500" width="1500" ></a>
+      </div>
+      <div class="item" role = "option">
+        <a href = "{{ url_for('get_message', ID = 21) }}"><img src="https://images-na.ssl-images-amazon.com/images/I/81Gvh0z7gXL._SL1500_.jpg"></a>
+      </div>
+      <div class = "item" role = "option">
+        <a href = "{{ url_for('get_message', ID = 39) }}"><img src="https://images-na.ssl-images-amazon.com/images/I/81QoeOKg0AL._SL1500_.jpg"></a>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<!-- Container (Pricing Section) -->
+
+<!-- Container (Contact Section) -->
+<div id="contact" class="container-fluid bg-grey">
+  <h2 class="text-center"><a href= "{{ url_for('contact')}}">CONTACT US</a></h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> San Jose, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span> (408) 111-1111</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Alectra@customerService.com</p>
+    </div>
+  </div>
+</div>
+
+<!-- Add Google Maps -->
+<div id="googleMap" style="height:400px;width:100%;"></div>
+<script>
+function myMap() {
+var myCenter = new google.maps.LatLng(37.338164, -121.884477);
+var mapProp = {center:myCenter, zoom:12, scrollwheel:false, draggable:false, mapTypeId:google.maps.MapTypeId.ROADMAP};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+var marker = new google.maps.Marker({position:myCenter});
+marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqYc8cju7UUi9BuHaGJYHPl50MPRDnU4s&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+<footer class="container-fluid text-center">
+  <a href="#myPage" title="Back to Top">
+    <span class="glyphicon glyphicon-arrow-up"></span>
+  </a>
+</footer>
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div class="container">
+	<br>
+	<h1><b>WELCOME TO PRODUCT EDIT!</b></h1>
+	<h2>Please chooce the edit key to edit!</h3>
+		<br>
+
+		<div>
+			<table>
+				<caption>
+					<h1>Products</h1>
+					<h3>{{ condition}} </h3>
+				</caption>
+				<tr>
+					<th>Key</th>
+					<th>Product Name</th>
+					<th>Department</th>
+					<th>Price</th>
+					<th>Stock</th>
+					<th>Rating</th>
+					<th>Free Shipping</th>
+					<th>Re-cycle Fee</th>
+					<th>Edit?</th>
+				</tr>
+
+				{% for item in products_data %}
+				<tr>
+					<td>{{item[0]}}</td>
+					<td><a href= {{url_for('get_message', ID = item[0])}}>{{item[1]}}</a></td>
+					<td>{{item[2]}}</td>
+					<td>{{item[3]}}</td>
+					<td>{{item[4]}}</td>
+					<td>{{item[5]}}</td>
+
+					{% if item[7] %}
+					<td>Yes</td>
+					{% else %}
+					<td>No</td>
+					{% endif %}
+
+					{% if item[8] %}
+					<td>Yes</td>
+					{% else %}
+					<td>No</td>
+					{% endif %}
+
+					<td><a href= {{url_for('product_edit', key = item[0])}}>edit</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+{% endblock %}

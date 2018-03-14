@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block container %}
+
+<h1 align = "center"> <img src = "http://www.rkengineers.com/interface/global/slider/pump.jpg"></h1>
+<br>
+<div class="container">
+
+   {% for item in products_data %}
+
+   <div class="col-sm-4">
+      <div class="panel panel-danger">
+          <div class="panel-heading"><a href= {{url_for('get_message', ID = item[0])}}>{{item[1]}}</a><br><sup align="center"> ID: {{item[0]}}</sup></div>
+          <div class="panel-body"><img src= {{item[6]}} class="img-responsive" style="width:350px;height:350px;" align = "middle" alt="Image">
+          <h3 align = "center">{{item[3]}}</h4>
+         </div>
+         <div class="panel-footer">Rating: {{item[5]}}<br>
+         {% if item[7] %}
+         qualifies for free shipping!
+         {% else %}
+         <br>
+         {% endif %}
+         </div>
+
+      </div>
+   </div>
+   {% if item[0] % 3 == 0 %}
+      <div class="container">
+
+      <div class="row">
+
+   {% endif %}
+
+   {% endfor %}
+   </div>
+
+{% endblock %}

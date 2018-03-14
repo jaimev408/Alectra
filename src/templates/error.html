@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+{% if errorType == 404 %}
+	<br>
+	<br>
+	<img src = {{url_for('static', filename = 'images/404error.png')}}>
+
+	
+
+	<h1>Sorry, the page you were looking for is not found!</h1>
+	<h1>{{ e }}</h1>
+
+{% else %}
+	<br>
+	<br>
+	<img src = {{url_for('static', filename = 'images/sadDog.gif')}}>
+	<h1> Sorry, page not recognized!</h1>
+
+{% endif %}
+
+{% endblock %}

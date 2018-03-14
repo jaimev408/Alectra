@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{URL}}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css"><!--JUST FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css"><!--JUST FONTS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><!--importing jQuery -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!--Importing bootsrap--><style>
+    .navbar {
+      margin-bottom: 0;
+      background-color: #f4511e;
+  }
+
+  .nav.navbar-nav li a {
+     color: #fff;
+ }
+
+ body {
+        {% if URL == "/home" %}
+        background-color: lightblue;
+        {% elif URL == "/advanced_search" %}
+        background-image: url("http://www.pptbackgrounds.org/uploads/thinker-abstract-vector-powerpoint-backgrounds.jpg");
+        {% else %}
+        background-image: url("http://www.pptbackgrounds.org/uploads/beautiful-lights-waves-powerpoint-backgrounds.jpg");
+        background-size: 100%
+        {% endif %}
+    }
+    table, th, td {
+        font-family: Helvetica;
+        border: 2px solid white;
+        border-collapse: collapse;
+        padding-left: 12px;
+        padding-right: 12px;
+        white-space: nowrap;
+    }
+
+    table {
+        width: auto;
+        overflow-x: scroll;
+    }
+
+    th {
+        font-weight:bold;
+        padding: 7px;
+        text-align: center;
+        color: Black;
+    }
+
+    td {
+        text-align: center;
+        color:Black
+    }
+</style>
+</head>
+<body>
+<nav id = "myPage" class="navbar navbar-inverse" role = "navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- Alectra logo sometimes doesn't load. Might have to replace-->
+      <a class="navbar-brand" href="{{url_for('home')}}"><img src="https://media.licdn.com/mpr/mpr/shrink_200_200/AAEAAQAAAAAAAAgFAAAAJDg2OWQ3ZTYyLTRiOTYtNDI1Mi1iYzZlLWRiNzA2NWJjNjViZA.png" alt="Alectra" style="width:70px;height:35px;"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="/products">Products</a></li>
+        <li><a href="/departments">Departments</a></li>
+        <li><a href="https://www.bestbuy.com">Our Partner</a></li>
+      </ul>
+      <ul class = "nav navbar-nav navbar-center">
+        <form action="/advanced_search">
+            <button type = "submit" class="btn btn-danger navbar-btn">Advanced Search</button>
+        </form>
+      </ul>
+      <ul class = "nav navbar-nav navbar-right">
+          {% if session.logged_in %}
+          <li><a href="{{ url_for('user_tools') }}"><span class="glyphicon glyphicon-wrench"></span>User Tools</a></li>
+          <li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          {% else %}
+          <li><a href="{{ url_for('registerPage') }}"><span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+          <li><a href="{{url_for('login')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          {% endif %}
+        </ul>
+        <form class="navbar-form navbar-left" action = "{{ url_for('searchingFunction')}}" method = "POST">
+            <div class="form-group">
+                <input type="text" name = "name">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+  </div>
+</nav>
+
+<div>
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="alert alert-{{category}} alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{ message }}
+    </div>
+  {% endfor %}
+</div>
+<div class="container-fluid">
+      {% block container %}
+      {% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div>
+{% if product_data|length == 0 %}
+    <h2>We currently do not have a product with ID {{ID}} in stock</h2>
+
+{% else %}
+	{% for item in product_data %}
+    <table>  
+    	<td><img src = {{item[6]}} style= "width:250px;height:350px"></td>
+    	<td valign="top"><h1 style="color:red;">{{item[1]}}</h1> 
+			<p><b>Rating:</b>{{item[5]}}</p>
+			<p><b>Stock:</b> {{item[4]}}</p>
+			<p><b>Recycle fee?:</b> 
+			{% if item[8] %}
+			Yes </p>
+			{% else %}
+			No </p>
+			{% endif %}
+			<p><b>Free shipping?:</b>
+			{% if item[7] %}
+			Yes </p>
+			{% else %}
+			No </p>
+			{% endif %}
+			<p><b>Price:</b> {{item[3]}}</p>
+		</td>
+	{% endfor %}
+
+	</table>
+</div>
+{% endif %}
+
+{% endblock %}

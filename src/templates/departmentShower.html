@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div>
+{% if departments_data|length == 0 %}
+    <h2>We currently do not have a department with ID {{ID}} in stock</h2>
+
+{% else %}
+	{% for item in departments_data %}
+
+	<h1>Welcome to the {{item[1]}} department!</h1>
+
+    <table>  
+    	<td><img src = "https://wallpaperbrowse.com/media/images/1449833400.4077_edabyt_n.jpg" style= "width:250px;height:350px"></td>
+    	<td valign="top"><h1 style="color:red;">Department Manager: {{item[4]}}</h1> 
+			<p><b>Warranty Years for items in this department:</b>{{item[2]}}</p>
+			<p><b>Department Phone:</b> {{item[3]}}</p>
+		</td>
+	{% endfor %}
+
+	</table>
+</div>
+{% endif %}
+
+
+{% endblock %}

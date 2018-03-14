@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block container %}
+
+<div class="container">
+	<br>
+	<h1><b>WELCOME TO USER TOOLS!</b></h1>
+	<h2>Please choose any of the following options</h2>
+	<br>
+	<h3>Product editing!</h3>
+	<a href = "{{url_for('product_create')}}">Create a Product!</a>
+	<br>
+	<a href = "{{url_for('product_delete_main')}}">Delete a Product!</a>
+	<br>
+	<a href = "{{url_for('product_edit_main')}}">Edit a Product!</a>
+
+
+	<br><br>
+	<h3>Department editing!</h3>
+	<a href = "{{url_for('department_create')}}">Create a Department!</a>
+	<br>
+	<a href = "{{url_for('department_delete_main')}}">Delete a Department!</a>
+	<br>
+	<a href = "{{url_for('department_edit_main')}}">Edit a Department!</a>
+
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div class="container">
+   <br>
+   <h1><b>WELCOME TO DEPARTMENT EDIT!</b></h1>
+   <h2>Please chooce the edit key to edit!</h3>
+      <br>
+
+      <div>
+         <div>
+            <table>
+               <caption>
+                  <h1>Departments</h1>
+               </caption>
+               <tr>
+                  <th>Department ID</th>
+                  <th>Department Title</th>
+                  <th>Warranty Type</th>
+                  <th>Phone Number</th>
+                  <th>Manager</th>
+                  <th>edit?</th>
+               </tr>
+               {% for item in departments_data %}
+               <tr>
+                  <td>{{item[0]}}</td>
+                  <td>{{item[1]}}</td>
+                  <td>{{item[2]}}</td>
+                  <td>{{item[3]}}</td>
+                  <td>{{item[4]}}</td>
+                  <td><a href= {{url_for('department_edit', key = item[0])}}>edit</a></td>
+               </tr>
+               {% endfor %}
+            </table>
+         </div>
+         {% endblock %}

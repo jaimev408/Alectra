@@ -1,0 +1,21 @@
+<!-- My updated Stuff--> 
+{% extends 'base.html' %}
+
+{% block container %}
+
+  <style>
+  span.highlight {
+     background-color: yellow;
+  }
+  </style>
+  <form method="POST" action="{{ url_for('app.product_delete_confirmed', id = products.prod_id, message=" Deletion of %s has been successful"%product.name) }}" role="form"><!--NEED to make product delete confirmed -->
+    <div class="top-pad">
+      <h3><span class="highlight">The following record will be deleted</span></h3>
+      <h1>{{ products.prod_name }}<small> {{ products.departments.name }}</small></h1><!--Not sure about this Line -->
+      <h3>{{ products.prod_price }}</h3>
+      <br/>
+    <button type="submit" class="btn btn-default">Confirm</button>
+    </div>
+  </form>
+
+{% endblock %}

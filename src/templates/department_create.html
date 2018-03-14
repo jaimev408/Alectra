@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block container %}
+  <div class="top-pad">
+  <h2>Department ID: {{ dept_id }}</h2>
+    <form method="POST" action="{{ url_for('department_create') }}" role="form"><!--This may not work I changes lets See-->
+      <div class="form-group">{{ form.dept_name.label }} : {{ form.dept_name() }}</div>
+       <div class="form-group">{{ form.warranty.label }}: {{ form.warranty() }}</div><!--Something Wrong Here-->  
+      <div class="form-group">{{ form.dept_phone.label }}: {{ form.dept_phone() }}</div>
+       <div class="form-group">{{ form.dept_manager.label }}: {{ form.dept_manager() }}</div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+{% endblock %}
